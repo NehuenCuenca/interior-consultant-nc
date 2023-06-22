@@ -36,6 +36,7 @@ header {
     display: flex;
     align-items: center;
 }
+header .hidden { display: none; }
 
 header #title-name {
     height: fit-content;
@@ -45,6 +46,8 @@ header #title-name {
     text-transform: uppercase;
     border: 1px solid white;
 }
+header .fa-bars { color: white;}
+
 header #navbar {
     width: 45%;
     margin: auto 0 auto auto;
@@ -95,7 +98,6 @@ main {
     font-weight: lighter;
     line-height: 1.5rem;
 }
-
 #description-section span { font-weight: bold;}
 
 
@@ -164,4 +166,74 @@ footer {
     justify-content: center;
     align-items: center;
     color: #BDBDBD;
+    
+}
+
+@media (max-width: 375px) {
+    body{
+        grid-template-columns: auto;
+        grid-template-rows: 1fr 8fr 1fr;
+        grid-template-areas: 
+        "header"
+        "main"
+        "footer";
+        row-gap: 5%;
+    }
+
+    header { justify-content: space-between;}
+    
+    header #navbar.mobile {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: #181719;
+        height: 100vh;
+        width: 100vw;
+        display: grid;
+        place-items: center;
+        z-index: 9;
+    }
+
+    header #navbar.mobile #close-hamburguer-menu {
+        position: absolute;
+        color: #FFFF;
+        font-size: 1.5rem;
+        top: 2%;
+        right: 5%;
+    }
+    header #navbar.mobile ul{
+        height: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #navbar.mobile ul li { font-size: 1.5rem; }
+
+    main {
+        grid-area: main;
+        padding: 0 5vw 15vh;
+        grid-template-columns: auto;
+        grid-template-rows: repeat(2, auto);
+        grid-template-areas: 
+        "description"
+        "imageSection";
+        row-gap: 5%;
+    }
+
+    header:has(.mobile) + main{ overflow-y: hidden; }
+
+    #description-section > * { margin: 1rem}
+
+    #image-section{
+        grid-area: imageSection;
+        width: 100%;
+        place-self: inherit;
+    }
+
+    #image-section .float-card {
+        width: 80%;
+        padding: 1rem .8rem;
+        bottom: -25%;
+        right: 5%;
+    }
 }
