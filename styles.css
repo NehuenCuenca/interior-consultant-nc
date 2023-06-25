@@ -45,7 +45,8 @@ header #title-name {
     text-transform: uppercase;
     border: 1px solid white;
 }
-header .fa-bars { color: white;}
+
+header .fa-bars { color: white; }
 
 header #navbar {
     width: 45%;
@@ -64,8 +65,17 @@ header #navbar {
     color: white;
     text-transform: capitalize;
     text-decoration: none;
-    font: 500 1rem 'Montserrat', sans-serif
+    font: 500 1rem 'Montserrat', sans-serif;
+    transition: color .3s ease-in;
 }
+#navbar ul li a:hover { 
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 3px;
+    text-underline-offset: 8px;
+    color: rgb(161, 161, 161);
+ } 
+
 
 #navbar ul li.active a{ 
     font-weight: 700;
@@ -117,6 +127,7 @@ main {
 #image-section #big-image img { 
     width: 100%;
     height: auto;
+    animation: fadeFromCenter 2s ease 0s 1 normal forwards;
 }
 
 #image-section .float-card {
@@ -134,6 +145,7 @@ main {
     "top"
     "bottom";
     gap: 10% 0;
+    animation: fadeFromBottom 1.5s ease 0s 1 normal forwards;
 }
 .float-card .top-float-card {
     grid-area: top;
@@ -162,6 +174,22 @@ main {
     font: 700 1rem 'Lora', serif;
 }
 
+@keyframes fadeFromBottom {
+	0% {
+		opacity: 0;
+		transform: translateY(50px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes fadeFromCenter {
+	0% { opacity: 0; }
+	100% { opacity: 1; }
+}
 
 footer {
     grid-area: footer;
